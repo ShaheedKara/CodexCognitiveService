@@ -1,0 +1,310 @@
+﻿@model MicroMk1.Models.DescribeImageModel
+@{
+    ViewBag.Title = "Describe image";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #000000;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #B0C4DE;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #DCDCDC;
+    }
+    html, body, #wrapper {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .zoom {
+        padding: 0;
+        background-color: transparent;
+        transition: transform .2s; /* Animation */
+        width: 20%;
+        height: 50%;
+        margin: 0 auto;
+    }
+
+        .zoom:hover {
+            transform: scale(1.25);
+        }
+
+    .btn {
+        background-color: #B0C4DE;
+        align-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-lg {
+        background-color: #B0C4DE;
+        align-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-primary {
+        background-color: #B0C4DE;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*************************HOVER SLIDE BUTTON****************/
+    html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: #162944;
+}
+
+.button_slide {
+  color: #FFF;
+  border: 2px solid #B0C4DE;
+  border-radius: 0px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: Arial;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #B0C4DE;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.slide_down:hover {
+  box-shadow: inset 0 100px 0 0 #B0C4DE;
+}
+
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #B0C4DE;
+}
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #B0C4DE;
+}
+
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #B0C4DE;
+}
+
+#outer {
+  width: 364px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+
+@******************************************gradient background***************************@
+body { 
+			background-image: url(https://data.tiendarollmachine.com/wp-content/uploads/2016/08/elegant-background-grey-illumination-wallpaper-e1361566509172.jpg) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+  
+}
+    /*body {
+  
+
+  
+  background: -webkit-linear-gradient(left #708090, #778899, #5F9EA0);
+  background: linear-gradient(to right, #DCDCDC,#B0C4DE,#5F9EA0);
+  font-family: 'Roboto', sans-serif;
+}*/
+
+
+/***************************************************************************/
+h1 {
+    border: 2px solid powderblue;
+    padding: 30px;
+}
+/*h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: Open Sans, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  padding: 5px;
+}*/
+
+
+
+</style>
+
+<center>
+    <h1><font size="35"><b></b><font color="#6cf"><font face="bookman">DESCRIPTION</font></b></font></font><br /></h1>
+</center>
+
+    
+    <li><p style="text-align:left;">
+    <span>
+
+        <i class="glyphicon glyphicon-circle-arrow-left"
+           style="font-size:24px;
+                       color:aqua;
+                       text-shadow:2px 2px 4px #000000;"
+           >
+       @Html.ActionLink("Back", "Index", "Home") </i>
+        
+    </span>
+</p>
+</li>
+    @*<body>
+           <p></p> style="text-align:left;" <span class="glyphicon glyphicon-circle-arrow-left" >
+            <a href="#">@Html.ActionLink("Back", "Index", "Home")</a></span>
+        </body>*@
+    <br /> </br> </br> </br>
+    @*@Html.Partial("_Upload")*@
+
+    @using MicroMk1.Models
+    <center>
+        <div class="container" style="padding-top: 24px">
+            <div class="row">
+                <div class="col-sm-8">
+                    @using (Html.BeginForm("Index", "Describe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="zoom">
+                            <div class="button_slide slide_left">
+                                <input type="button" value="Upload a Photo" class="btn   btn-lg" onclick="$('#upload').click();" />
+                            </div>
+                            <br /> <br /><br />
+                            <input type="file" name="file" id="upload" style="display: none" onchange="$('#submit').click();" />
+
+                            <input type="submit" id="submit" style="display: none" />
+
+                        </div>
+
+                    }
+                </div>
+            </div>
+    </center>
+
+
+
+    @*<div class="row">
+                <div class="col-sm-12">
+                    @foreach (BlobInfo blob in ViewBag.Blobs)
+                    {
+                        <img src="@blob.ThumbnailUri" width="192" title="@blob.Caption" style="padding-right: 16px; padding-bottom: 16px" />
+                    }
+                </div>
+            </div>
+        </div>*@
+
+    @section scripts
+{
+        <script type="text/javascript" language="javascript">
+            if ("@TempData["Message"]" !== "") {
+                alert("@TempData["Message"]");
+            }
+        </script>
+    }
+
+
+
+
+
+
+
+
+
+
+
+    &nbsp;
+    @if (Model != null && !string.IsNullOrEmpty(Model.ImageDump))
+    {
+        <table id="wrapper">
+            <img src="@Model.ImageDump" width="600" />
+        </table>
+        <h3>Description</h3>
+        <table class="table-bordered">
+            <tr>
+                <th>Adult content</th>
+                <td>@Model.Result.Adult.IsAdultContent</td>
+            </tr>
+            <tr>
+                <th>Racy content</th>
+                <td>@Model.Result.Adult.IsRacyContent</td>
+            </tr>
+            <tr>
+                <th>Categories</th>
+                <td>@string.Join(", ", Model.Result.Categories.Select(c => c.Name + " (" + c.Detail + ")").ToArray())</td>
+            </tr>
+            <tr>
+                <th>Accent color</th>
+                <td>@Model.Result.Color.AccentColor</td>
+            </tr>
+            <tr>
+                <th>Dominant background color</th>
+                <td>@Model.Result.Color.DominantColorBackground</td>
+            </tr>
+            <tr>
+                <th>Dominant foreground color</th>
+                <td>@Model.Result.Color.DominantColorForeground</td>
+            </tr>
+            <tr>
+                <th>Dominant colors</th>
+                <td>@string.Join(", ", Model.Result.Color.DominantColors)</td>
+            </tr>
+            <tr>
+                <th>Black-white</th>
+                <td>@Model.Result.Color.IsBWImg</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    @foreach (var cap in Model.Result.Description.Captions)
+                {
+                        <text>@cap.Text  <br /></text>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Clip art type</th>
+                <td>@Model.Result.ImageType.ClipArtType</td>
+            </tr>
+            <tr>
+                <th>Line drawing type</th>
+                <td>@Model.Result.ImageType.LineDrawingType</td>
+            </tr>
+            <tr>
+                <th>Metadata</th>
+                <td>@Model.Result.Metadata.Format (@Model.Result.Metadata.Width x @Model.Result.Metadata.Height)</td>
+            </tr>
+            <tr>
+                <th>Tags</th>
+                <td>@string.Join(", ", Model.Result.Tags.Select(t => t.Name).ToArray())</td>
+            </tr>
+        </table>
+    }

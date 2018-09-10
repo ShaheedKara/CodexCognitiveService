@@ -1,0 +1,87 @@
+﻿@model MicroMk1.Models.BlobInfo
+@{
+    ViewBag.Title = "Thank";
+}
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        background-image: url(https://data.tiendarollmachine.com/wp-content/uploads/2016/08/elegant-background-grey-illumination-wallpaper-e1361566509172.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #999;
+    }
+    /***************************************************************************/
+h1 {
+    border: 2px solid powderblue;
+    padding: 30px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.zoom {
+    padding: 25px;
+    transition: transform .5s;
+   
+    margin: 7px;
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5);  
+    -webkit-transform: scale(1.5); 
+    transform: scale(1.5); 
+}
+
+</style>
+
+<center>
+    <h1><font size="35"><b></b><font color="#6cf"><font face="bookman">BLOB STORAGE</font></b></font></font><br /></h1>
+</center>
+<li>
+    <p style="text-align:left;">
+        <span>
+
+            <i class="glyphicon glyphicon-circle-arrow-left"
+               style="font-size:24px;
+                       color:aqua;
+                       text-shadow:2px 2px 4px #000000;">
+                @Html.ActionLink("Back", "Index", "Home")
+            </i>
+
+        </span>
+    </p>
+</li>
+@using MicroMk1.Models
+
+
+@using (Html.BeginForm("Search", "Describe", FormMethod.Post, new { enctype = "multipart/form-data", @class = "navbar-form" }))
+{
+    @*<div class="input-group">
+        <input type="text" class="form-control" placeholder="Search photos" name="term" value="@ViewBag.Search" style="max-width: 800px">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </span>
+    </div>*@
+   
+}
+
+    @foreach (BlobInfo blob in ViewBag.Blobs)
+    {
+        <a href="@blob.ImageUri" rel="lightbox" title="@blob.Caption">
+            <img src="@blob.ThumbnailUri"class="zoom" width="198" height="198" title="@blob.Caption" style="padding-right: 16px; padding-left: 16px; padding-top: 16px; padding-bottom: 16px" />
+        </a>
+
+    }
+
+
+
+
+

@@ -1,0 +1,201 @@
+﻿@model MicroMk1.Models.RecognizeTextModel
+@{
+    ViewBag.Title = "Recognize text";
+}
+
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        background-image: url(https://data.tiendarollmachine.com/wp-content/uploads/2016/08/elegant-background-grey-illumination-wallpaper-e1361566509172.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #999;
+    }
+     /***************************************************************************/
+  h1 {
+    border: 2px solid powderblue;
+    padding: 30px;
+}
+    /*******************************************************highlight fancy button**************/
+    /*.btn {
+        position: relative;
+        background-color:#B0C4DE;
+        border: none;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        -webkit-transition-duration: 0.4s;*/ /* Safari */
+    /*transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+    }
+
+        .btn:hover {
+            background: #fff;
+            box-shadow: 0px 2px 10px 5px #B0C4DE;
+            color: #000;
+        }
+
+        .btn:after {
+            content: "";
+            background: #B0C4DE;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s;
+        }
+
+        .btn:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s;
+        }*/
+
+    /*************************HOVER SLIDE BUTTON****************/
+
+
+
+
+    .button_slide {
+        color: #31968f;
+        border: 2px solid #B0C4DE;
+        border-radius: 0px;
+        padding: 18px 36px;
+        display: inline-block;
+        font-family: Arial;
+        font-size: 14px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-shadow: inset 0 0 0 0 #B0C4DE;
+        -webkit-transition: ease-out 0.4s;
+        -moz-transition: ease-out 0.4s;
+        transition: ease-out 0.4s;
+    }
+
+    .slide_down:hover {
+        box-shadow: inset 0 100px 0 0 #B0C4DE;
+    }
+
+    .slide_right:hover {
+        box-shadow: inset 400px 0 0 0 #B0C4DE;
+    }
+
+    .slide_left:hover {
+        box-shadow: inset 0 0 0 50px #B0C4DE;
+    }
+
+    .slide_diagonal:hover {
+        box-shadow: inset 400px 50px 0 0 #B0C4DE;
+    }
+
+    #outer {
+        width: 364px;
+        margin: 50px auto 0 auto;
+        text-align: center;
+       
+</style>
+
+<center>
+    <h1><font size="35"><b></b><font color="#6cf"><font face="bookman">RECOGNISE TEXT</font></b></font></font><br /></h1>
+</center>
+<br /> <br /><br />
+<li>
+    <p style="text-align:left;">
+        <span>
+
+            <i class="glyphicon glyphicon-circle-arrow-left"
+               style="font-size:24px;
+                       color:aqua;
+                       text-shadow:2px 2px 4px #000000;">
+                @Html.ActionLink("Back", "Index", "Home")
+            </i>
+
+        </span>
+    </p>
+</li>
+@*@Html.Partial("_Upload")*@
+
+@using MicroMk1.Models
+<center>
+<div class="container" style="padding-top: 24px">
+    <div class="row">
+        <div class="col-sm-8">
+            @using (Html.BeginForm("Index", "Handwriting", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="file"  name="file" id="upload" style="display: none" onchange="$('#submit').click();" />
+                <input type="button" value="Upload a Photo" class="button_slide slide_left"class="zoom" onclick="$('#upload').click();" />
+                <input type="submit" id="submit" style="display: none" />
+            }
+        </div>
+        <div class="col-sm-4 pull-right">
+        </div>
+    </div>
+    </center>
+
+
+
+@*<div class="row">
+            <div class="col-sm-12">
+                @foreach (BlobInfo blob in ViewBag.Blobs)
+                {
+                    <img src="@blob.ThumbnailUri" width="192" title="@blob.Caption" style="padding-right: 16px; padding-bottom: 16px" />
+                }
+            </div>
+        </div>
+    </div>*@
+
+@section scripts
+{
+    <script type="text/javascript" language="javascript">
+        if ("@TempData["Message"]" !== "") {
+            alert("@TempData["Message"]");
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+@if (Model != null && !string.IsNullOrEmpty(Model.ImageDump))
+{
+    <img src="@Model.ImageDump" width="600" />
+
+        <h3>Texts</h3>
+
+        <ol>
+            @foreach (var result in Model.Results.Regions)
+            {
+                <li>
+                    @result.BoundingBox
+                    <ul>
+                        @foreach (var line in result.Lines)
+                    {
+                            <li>
+                                @foreach (var word in line.Words)
+                                {
+                                    <text>@word.Text</text>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ol>
+}

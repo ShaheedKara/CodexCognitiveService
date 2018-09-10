@@ -1,0 +1,291 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@****************FANCY  NAVBAR***************@
+<style>
+body {
+    background-color: #6cf;
+    font-size: 100%;
+    padding: 3em;
+    background-size: 20px
+}
+.mainNav {
+    float: left;
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+    background-size: 20px
+}
+.mainNav ul {
+  list-style: none;
+  padding: 0;
+}
+.mainNav li {
+    display: inline-block;
+    margin-right: -.25em;
+}
+.mainNav a {
+    background-color: hsla(0,0%,100%,.25);
+    backface-visibility: hidden;
+    color: #6cf;
+    display: block;
+    font: bold 4em/3 sans-serif;
+    padding: 0 1.5em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.25);
+    transition: .5s;
+    transform-origin: 0% 50%;
+    transform-style: preserve-3d;
+    width: 10em;
+
+}
+.mainNav a:after {
+    background-color: #ebe4e4;
+    color: inherit;
+    content: attr(data-title);
+    height: 100%;
+    left: 0;
+    line-height: 3;
+    position: absolute;
+    top: 100%;
+    transform: rotateX(-90deg);
+    transform-origin: 0 0;
+    width: 100%;
+}
+.mainNav a:before {
+    background-color:  #ebe4e4;
+    bottom: 0;
+    content: '';
+    height: 3em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: 0 0;
+    width: 3em;
+}
+.mainNav li:nth-child(-n+2) a:before {
+    transform: rotateY(90deg) translateZ(3em);
+}
+.mainNav li:nth-child(n+3) a:before {
+    left: 0;
+    right: auto;
+    transform: rotateY(90deg);
+}
+.mainNav li:hover a {
+    transform: rotateX(90deg) translateY(-1.5em) translateZ(1.5em);
+}
+.mainNav .current:hover a {
+   transform: rotateX(0deg) translateY(0) translateZ(0);
+}
+
+ @***********************************BACKGROUND*************@
+ 
+
+         html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+
+
+  background: #162944;
+}
+
+.button_slide {
+  color: #FFF;
+  border: 2px solid rgb(216, 2, 134);
+  border-radius: 0px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer; 
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.slide_down:hover {
+  box-shadow: inset 0 100px 0 0 #D80286;
+}
+
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #D80286;
+}
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #D80286;
+}
+
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #D80286;
+}
+
+#outer {
+  width: 364px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+
+         body{
+  background: -webkit-linear-gradient(left #66ccff, #66ccff,#66ccff);
+  background: linear-gradient(to right, #66ccff, #66ccff);
+  font-family: 'Roboto', sans-serif;
+}
+
+
+         /*************************************/
+         
+         html, body{
+  height: 100%;
+}
+body { 
+			background-image: url(http://www.fullhdwpp.com/wp-content/uploads/Chicago-City-Monochrome-26_www.FullHDWpp.com_.jpg?x69613) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+  
+}
+
+div, body{
+  margin: 0;
+  padding: 0;
+  font-family: exo, sans-serif;
+  
+}
+.wrapper {
+  height: 100%; 
+  width: 100%; 
+}
+
+.message {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%; 
+  height:45%;
+  bottom: 0; 
+  display: block;
+  position: absolute;
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 0.5em;
+}
+/***************************************************************************/
+h1 {
+    border: 2px solid powderblue;
+    padding: 30px;
+
+}
+/*********************************************/
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 41px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #00ffff;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+ </style>
+
+
+
+
+@*************************H T M L********************************H T M L*****************************H T M L*****************************************@
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <li><a href="#">@Html.ActionLink("Describe", "Index", "Describe")</a></li>
+            <li><a href="#">@Html.ActionLink("Handwriting", "Index", "Handwriting")</a></li>
+            <li><a href="#">@Html.ActionLink("Text", "Index", "Text")</a></li>
+            <li><a href="#">@Html.ActionLink("Blobs", "Thank", "Describe")</a></li>
+        </div>
+    </div>
+
+ <font color="#6cf">
+     <center><h1> <span style="font-size:80px;cursor:pointer" onclick="openNav()"><font face="bookman">ARTIFICIAL INTELLIGENCE</font></span></font></h1></center>
+       <h5 style="text-align:right;"><font color="#6cf">By CODEX INNOVATIONS</font></h5>
+
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+
+    </body>
+    </html>
+
+
+
+
+    @****************************FANCY NAVBAR HTML*********************************************@
+    @*<body>
+
+            <nav class="mainNav">
+                <ul>
+                    <li><a href="#">@Html.ActionLink("Describe", "Index", "Describe")</a></li>
+                    <li><a href="#">@Html.ActionLink("Handwriting", "Index", "Handwriting")</a></li>
+                    <li><a href="#">@Html.ActionLink("Text", "Index", "Text")</a></li>
+                    <li><a href="#">@Html.ActionLink("Blobs", "Images", "Describe")</a></li>
+                </ul>
+            </nav>
+        </body>*@
